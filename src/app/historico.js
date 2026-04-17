@@ -1,7 +1,7 @@
 import AsyncStorage from '@react-native-async-storage/async-storage';
 import { useFocusEffect, useRouter } from 'expo-router';
 import { useCallback, useEffect, useState } from 'react';
-import { ActivityIndicator, FlatList, ScrollView, StyleSheet, Text, TouchableOpacity, View } from 'react-native';
+import { ActivityIndicator, FlatList, Image, ScrollView, StyleSheet, Text, TouchableOpacity, View } from 'react-native';
 
 const STORAGE_KEY = '@minhas_financas:transacoes';
 
@@ -12,8 +12,8 @@ export default function Historico() {
   const [loading, setLoading] = useState(true);
 
   // Estados dos Filtros
-  const [filterType, setFilterType] = useState('all'); // 'all', 'income', 'outcome'
-  const [filterPeriod, setFilterPeriod] = useState('all'); // 'all', '30days', '3months', 'year'
+  const [filterType, setFilterType] = useState('all');
+  const [filterPeriod, setFilterPeriod] = useState('all');
 
   // Carregar dados sempre que abrir a tela
   useFocusEffect(
@@ -41,7 +41,7 @@ export default function Historico() {
     applyFilters();
   }, [transactions, filterType, filterPeriod]);
 
-  // Função  objeto Date real
+  // Função Data real
   const parseDateBR = (dateStr) => {
     if (!dateStr) return new Date(0);
     const parts = dateStr.split('/');
@@ -88,6 +88,11 @@ export default function Historico() {
 
   return (
     <View style={styles.container}>
+    <Image 
+        source={require('../../assets/images/logo.png')} 
+        style={{ position: 'absolute', width: '150%', height: '150%', opacity: 0.08, resizeMode: 'cover' }}
+        blurRadius={15} 
+    />
       {/* BUTTON de Rtorno ao menu */}
       <TouchableOpacity style={styles.backButton} onPress={() => router.back()}>
         <Text style={styles.backButtonText}>⬅ Voltar ao Menu</Text>

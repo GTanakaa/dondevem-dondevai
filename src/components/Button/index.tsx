@@ -1,14 +1,13 @@
-// src/components/Button/index.tsx
 import React from 'react';
-import { Text, TouchableOpacity } from 'react-native'; // 1. Importações
-import { styles } from './styles'; // 2. Importa os estilos
+import { Text, TouchableOpacity } from 'react-native';
+import { styles } from './styles';
 
-interface ButtonProps { // 3. Define as Props
+interface ButtonProps {
   title: string;
   onPress: () => void;
 }
 
-export function Button({ title, onPress, ...rest }: ButtonProps) { // 4. Componente Button
+export function Button({ title, onPress, ...rest }: ButtonProps) {
   return (
     <TouchableOpacity style={styles.button} onPress={onPress} {...rest}>
       <Text style={styles.buttonText}>{title}</Text>

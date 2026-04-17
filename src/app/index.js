@@ -1,5 +1,5 @@
 import { useRouter } from 'expo-router';
-import { StyleSheet, Text, TouchableOpacity, View } from 'react-native';
+import { Image, StyleSheet, Text, TouchableOpacity, View } from 'react-native';
 
 export default function Home() {
   const router = useRouter();
@@ -7,46 +7,48 @@ export default function Home() {
   return (
     <View style={styles.container}>
       
-      {/* Título */}
-      <View style={styles.titleContainer}>
-        <Text style={styles.titleGreen}>Dondevem?</Text>
-        <Text style={styles.titleRed}>Dondevai?</Text>
+      {/* PLANO DE FUNDO DESFOCADO */}
+      <Image 
+        source={require('../../assets/images/logo.png')} 
+        style={styles.backgroundImage}
+        blurRadius={15}
+      />
+
+      {/* LOGOTIPO PRINCIPAL */}
+      <View style={styles.logoContainer}>
+        <Image 
+          source={require('../../assets/images/logo.png')} 
+          style={styles.logo}
+        />
       </View>
 
-      {/* Menu de Buttons */}
+      {/* Menu de Botões */}
       <View style={styles.menuContainer}>
         
-        <TouchableOpacity 
-          style={styles.button} 
-           onPress={() => router.push('/resumo')}
-        >
-          <Text style={styles.buttonText}>Resumo geral</Text>
-          <Text style={styles.buttonSubText}>Gráficos de pizza com porcentagens</Text>
+        <TouchableOpacity style={styles.button} onPress={() => router.push('/resumo')}>
+          <Text style={styles.buttonText}>📈 Resumo geral</Text>
+          <Text style={styles.buttonSubText}>Resumo dos gastos e ganhos</Text>
         </TouchableOpacity>
 
-        <TouchableOpacity 
-          style={styles.button} 
-          onPress={() => router.push('/controle')}
-        >
-          <Text style={styles.buttonText}>Controle-se</Text>
+        <TouchableOpacity style={styles.button} onPress={() => router.push('/controle')}>
+          <Text style={styles.buttonText}>💸Controle-se</Text>
           <Text style={styles.buttonSubText}>Adicionar gastos e ganhos</Text>
         </TouchableOpacity>
 
-        <TouchableOpacity 
-          style={styles.button} 
-          onPress={() => router.push('/ranking')}
-        >
-          <Text style={styles.buttonText}>Ranking</Text>
+        <TouchableOpacity style={styles.button} onPress={() => router.push('/ranking')}>
+          <Text style={styles.buttonText}>🏆 Ranking</Text>
           <Text style={styles.buttonSubText}>Seu top tier de gastos do mês</Text>
         </TouchableOpacity>
 
-        <TouchableOpacity 
-          style={styles.button} 
-          onPress={() => router.push('/historico')}
-        >
-          <Text style={styles.buttonText}>Histórico</Text>
+        <TouchableOpacity style={styles.button} onPress={() => router.push('/historico')}>
+          <Text style={styles.buttonText}>📝 Histórico</Text>
           <Text style={styles.buttonSubText}>Lista completa de transações</Text>
         </TouchableOpacity>
+
+        <TouchableOpacity style={styles.button} onPress={() => router.push('/configuracoes')}>
+            <Text style={styles.buttonText}>⚙️ Configurações</Text>
+            <Text style={styles.buttonSubText}>Ajustes e gestão de dados</Text>
+        </TouchableOpacity>        
 
       </View>
     </View>
@@ -59,49 +61,40 @@ const styles = StyleSheet.create({
     backgroundColor: '#f0f2f5',
     padding: 30,
     justifyContent: 'center',
+    alignItems: 'center', 
   },
-  titleContainer: {
-    alignItems: 'center',
+  
+  // Fundo Desfocado
+  backgroundImage: {
+    position: 'absolute',
+    width: '150%', 
+    height: '150%',
+    opacity: 0.1,
+    resizeMode: 'cover',
+  },
+
+  // Logotipo Principal
+  logoContainer: {
     marginBottom: 50,
+    alignItems: 'center',
   },
-  titleGreen: {
-    fontSize: 36,
-    fontWeight: 'bold',
-    color: '#2ecc71', 
-    fontStyle: 'italic',
+  logo: {
+    width: 320,  
+    height: 180, 
+    resizeMode: 'contain', 
   },
-  titleRed: {
-    fontSize: 36,
-    fontWeight: 'bold',
-    color: '#e74c3c', 
-    fontStyle: 'italic',
-    marginLeft: 40, 
-  },
-  menuContainer: {
-    width: '100%',
-  },
+
+  menuContainer: { width: '100%' },
   button: {
-    backgroundColor: '#ffffff',
+    backgroundColor: 'rgba(255, 255, 255, 0.9)',
     paddingVertical: 18,
     paddingHorizontal: 20,
     borderRadius: 12,
     marginBottom: 15,
     borderWidth: 1,
-    borderColor: '#e1e5eb',
-    shadowColor: '#000',
-    shadowOffset: { width: 0, height: 2 },
-    shadowOpacity: 0.05,
-    shadowRadius: 4,
+    boxShadow: '0px 2px 4px rgba(0, 0, 0, 0.05)',
     elevation: 2, 
   },
-  buttonText: {
-    fontSize: 18,
-    fontWeight: 'bold',
-    color: '#2c3e50',
-    marginBottom: 4,
-  },
-  buttonSubText: {
-    fontSize: 13,
-    color: '#7f8c8d',
-  }
+  buttonText: { fontSize: 18, fontWeight: 'bold', color: '#2c3e50', marginBottom: 4 },
+  buttonSubText: { fontSize: 13, color: '#7f8c8d' }
 });
