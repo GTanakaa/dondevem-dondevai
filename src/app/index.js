@@ -1,56 +1,102 @@
 import { useRouter } from 'expo-router';
-import { Image, StyleSheet, Text, TouchableOpacity, View } from 'react-native';
+import { Image, ScrollView, StyleSheet, Text, TouchableOpacity, View } from 'react-native';
+
+const MENU_ITEMS = [
+  {
+    rota: '/resumo',
+    icone: '📈',
+    titulo: 'Resumo Geral',
+    subtitulo: 'Resumo dos gastos e ganhos',
+    cor: '#3498db',
+  },
+  {
+    rota: '/controle',
+    icone: '💸',
+    titulo: 'Controle-se',
+    subtitulo: 'Adicionar gastos e ganhos',
+    cor: '#e74c3c',
+  },
+  {
+    rota: '/ranking',
+    icone: '🏆',
+    titulo: 'Ranking',
+    subtitulo: 'Seu top tier de gastos do mês',
+    cor: '#f39c12',
+  },
+  {
+    rota: '/historico',
+    icone: '📝',
+    titulo: 'Histórico',
+    subtitulo: 'Lista completa de transações',
+    cor: '#8e44ad',
+  },
+  {
+    rota: '/exportacao',
+    icone: '📊',
+    titulo: 'Exportar para Planilha',
+    subtitulo: 'Gerar arquivo Excel com seus dados',
+    cor: '#27ae60',
+    destaque: true,   // borda verde para diferenciar
+  },
+  {
+    rota: '/configuracoes',
+    icone: '⚙️',
+    titulo: 'Configurações',
+    subtitulo: 'Ajustes e gestão de dados',
+    cor: '#7f8c8d',
+  },
+];
 
 export default function Home() {
   const router = useRouter();
 
   return (
     <View style={styles.container}>
-      
-      {/* PLANO DE FUNDO DESFOCADO */}
-      <Image 
-        source={require('../../assets/images/logo.png')} 
+      {/* Fundo desfocado */}
+      <Image
+        source={require('../../assets/images/logo.png')}
         style={styles.backgroundImage}
         blurRadius={15}
       />
 
-      {/* LOGOTIPO PRINCIPAL */}
+      {/* Logo */}
       <View style={styles.logoContainer}>
-        <Image 
-          source={require('../../assets/images/logo.png')} 
+        <Image
+          source={require('../../assets/images/logo.png')}
           style={styles.logo}
         />
       </View>
 
-      {/* Menu de Botões */}
-      <View style={styles.menuContainer}>
-        
-        <TouchableOpacity style={styles.button} onPress={() => router.push('/resumo')}>
-          <Text style={styles.buttonText}>📈 Resumo geral</Text>
-          <Text style={styles.buttonSubText}>Resumo dos gastos e ganhos</Text>
-        </TouchableOpacity>
+      {/* Menu */}
+      <ScrollView
+        style={styles.menuScroll}
+        showsVerticalScrollIndicator={false}
+        contentContainerStyle={styles.menuContainer}
+      >
+        {MENU_ITEMS.map((item) => (
+          <TouchableOpacity
+            key={item.rota}
+            style={[
+              styles.button,
+              item.destaque && { borderColor: item.cor, borderWidth: 1.5 },
+            ]}
+            onPress={() => router.push(item.rota)}
+            activeOpacity={0.75}
+          >
+            {/* Barra colorida lateral */}
+            <View style={[styles.colorBar, { backgroundColor: item.cor }]} />
 
-        <TouchableOpacity style={styles.button} onPress={() => router.push('/controle')}>
-          <Text style={styles.buttonText}>💸Controle-se</Text>
-          <Text style={styles.buttonSubText}>Adicionar gastos e ganhos</Text>
-        </TouchableOpacity>
+            <View style={styles.buttonContent}>
+              <Text style={styles.buttonText}>
+                {item.icone} {item.titulo}
+              </Text>
+              <Text style={styles.buttonSubText}>{item.subtitulo}</Text>
+            </View>
+          </TouchableOpacity>
+        ))}
 
-        <TouchableOpacity style={styles.button} onPress={() => router.push('/ranking')}>
-          <Text style={styles.buttonText}>🏆 Ranking</Text>
-          <Text style={styles.buttonSubText}>Seu top tier de gastos do mês</Text>
-        </TouchableOpacity>
-
-        <TouchableOpacity style={styles.button} onPress={() => router.push('/historico')}>
-          <Text style={styles.buttonText}>📝 Histórico</Text>
-          <Text style={styles.buttonSubText}>Lista completa de transações</Text>
-        </TouchableOpacity>
-
-        <TouchableOpacity style={styles.button} onPress={() => router.push('/configuracoes')}>
-            <Text style={styles.buttonText}>⚙️ Configurações</Text>
-            <Text style={styles.buttonSubText}>Ajustes e gestão de dados</Text>
-        </TouchableOpacity>        
-
-      </View>
+        <View style={{ height: 20 }} />
+      </ScrollView>
     </View>
   );
 }
@@ -59,42 +105,65 @@ const styles = StyleSheet.create({
   container: {
     flex: 1,
     backgroundColor: '#f0f2f5',
-    padding: 30,
-    justifyContent: 'center',
-    alignItems: 'center', 
+    alignItems: 'center',
   },
-  
-  // Fundo Desfocado
+
   backgroundImage: {
     position: 'absolute',
-    width: '150%', 
+    width: '150%',
     height: '150%',
     opacity: 0.1,
     resizeMode: 'cover',
   },
 
-  // Logotipo Principal
   logoContainer: {
-    marginBottom: 50,
+    marginTop: 60,
+    marginBottom: 24,
     alignItems: 'center',
   },
   logo: {
-    width: 320,  
-    height: 180, 
-    resizeMode: 'contain', 
+    width: 280,
+    height: 160,
+    resizeMode: 'contain',
   },
 
-  menuContainer: { width: '100%' },
+  menuScroll: { width: '100%' },
+  menuContainer: { paddingHorizontal: 24, paddingBottom: 10 },
+
   button: {
-    backgroundColor: 'rgba(255, 255, 255, 0.9)',
-    paddingVertical: 18,
-    paddingHorizontal: 20,
+    backgroundColor: 'rgba(255, 255, 255, 0.95)',
     borderRadius: 12,
-    marginBottom: 15,
+    marginBottom: 12,
+    flexDirection: 'row',
+    alignItems: 'center',
+    overflow: 'hidden',
+    elevation: 2,
+    shadowColor: '#000',
+    shadowOffset: { width: 0, height: 1 },
+    shadowOpacity: 0.06,
+    shadowRadius: 3,
     borderWidth: 1,
-    boxShadow: '0px 2px 4px rgba(0, 0, 0, 0.05)',
-    elevation: 2, 
+    borderColor: 'transparent',
   },
-  buttonText: { fontSize: 18, fontWeight: 'bold', color: '#2c3e50', marginBottom: 4 },
-  buttonSubText: { fontSize: 13, color: '#7f8c8d' }
+
+  colorBar: {
+    width: 4,
+    alignSelf: 'stretch',
+  },
+
+  buttonContent: {
+    flex: 1,
+    paddingVertical: 16,
+    paddingHorizontal: 16,
+  },
+  buttonText: {
+    fontSize: 17,
+    fontWeight: 'bold',
+    color: '#2c3e50',
+    marginBottom: 3,
+  },
+  buttonSubText: {
+    fontSize: 13,
+    color: '#7f8c8d',
+  },
 });
