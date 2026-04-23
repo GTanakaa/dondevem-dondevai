@@ -8,11 +8,12 @@
 
 ## 📸 Screenshots
 
-| Tela Inicial | Resumo Geral | Controle-se | Ranking | Histórico | Configurações |
-| :---: | :---: | :---: | :---: | :---: | :---: | :---: | :---: |
-| ![Tela Inicial](https://github.com/user-attachments/assets/5a260340-6a61-4c33-9d4b-ce66c9f637a0) | ![Resumo Geral](https://github.com/user-attachments/assets/fbce7d7e-aaf0-4007-b820-c67aec516a9b) | ![Controle-se Gasto](https://github.com/user-attachments/assets/40269452-7c51-4412-8405-4382938a038b) | ![Controle-se Ganho](https://github.com/user-attachments/assets/014588dc-9566-4a4a-bc88-dca5b0662c36) | ![Historico](https://github.com/user-attachments/assets/6025d9d6-ea03-45de-86a6-a1432e62a2b3) | ![Configurações](https://github.com/user-attachments/assets/caa5fdd2-580d-43b7-afd6-ace60303beb1) |
+| Tela Inicial | Resumo Geral | Controle-se Gasto | Controle-se Ganho | Ranking | Histórico | Configurações |
+| :---: | :---: | :---: | :---: | :---: | :---: | :---: |
+| <img src="https://github.com/user-attachments/assets/5a260340-6a61-4c33-9d4b-ce66c9f637a0" width="160"> | <img src="https://github.com/user-attachments/assets/fbce7d7e-aaf0-4007-b820-c67aec516a9b" width="160"> | <img src="https://github.com/user-attachments/assets/40269452-7c51-4412-8405-4382938a038b" width="160"> | <img src="https://github.com/user-attachments/assets/014588dc-9566-4a4a-bc88-dca5b0662c36" width="160"> | <img src="https://github.com/user-attachments/assets/d835c8cf-211e-499d-865c-6ab624c1dfcb" width="160"> | <img src="https://github.com/user-attachments/assets/6025d9d6-ea03-45de-86a6-a1432e62a2b3" width="160"> | <img src="https://github.com/user-attachments/assets/caa5fdd2-580d-43b7-afd6-ace60303beb1" width="160"> |
 
 ---
+
 
 ## ✨ Funcionalidades
 
