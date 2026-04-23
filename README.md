@@ -2,7 +2,10 @@
 
 > Um aplicativo de controle financeiro pessoal que responde às duas perguntas mais importantes da sua vida financeira de forma clara e interativa.
 
-**Status:** Alpha em evolução ativa 🚧
+[![Android](https://img.shields.io/badge/ANDROID-10%2B-3DDC84?style=flat-square&logo=android&logoColor=white&labelColor=555)](SEU_LINK_AQUI)
+[![iOS](https://img.shields.io/badge/iOS-13%2B-000000?style=flat-square&logo=apple&logoColor=white&labelColor=555)](SEU_LINK_AQUI)
+
+**Status:** Em desenvolvimento 🚧
 
 ---
 
